@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Shopping Registration</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <h1>Grocery Store</h1> <!-- Header added here -->
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registrationForm" action="/register" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- New Confirm Password Field -->
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- Success Message -->
+        <p id="successMessage" style="display: none; color: green; text-align: center; margin-top: 15px;">
+            Successfully registered!
+        </p>
+
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Password Validation and Success Message -->
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                return; // Exit the function if passwords do not match
+            }
+
+            // Show the success message
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Clear the form fields
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+</body>
+</html>
